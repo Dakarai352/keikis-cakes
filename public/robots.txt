@@ -1,0 +1,7 @@
+# Keiki's Cakes & Treats
+# https://keikiscakes.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://keikiscakes.com/sitemap.xml

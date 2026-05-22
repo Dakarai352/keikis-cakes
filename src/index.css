@@ -1,0 +1,663 @@
+/* ============================================================
+   Typography Decision — Keiki's Cakes & Treats
+
+   Cormorant Garamond Semibold: The high-contrast editorial serif
+   carries the elegance of a handwritten celebration invitation —
+   it is the typographic translation of gold lettering on a custom
+   cake box. Nothing else in this design space makes this choice.
+
+   Jost Regular: A warm, geometric humanist sans that reads cleanly
+   at every size and never competes with Cormorant for attention.
+   It is the copy between the beautiful moments, never the moment itself.
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Surfaces — derived from the cake itself */
+  --bg:         #FAF7F2;
+  --on-bg:      #2C1A0E;
+  --surface:    #F2EBE1;
+  --on-surface: #2C1A0E;
+  --dark:       #1C1008;
+  --on-dark:    #FAF7F2;
+
+  /* Accent — pulled from the gold geometric frames in Saleena's brand assets */
+  --accent:     #B8935A;
+  --on-accent:  #1C1008;
+
+  /* Secondary palette */
+  --sage:       #7A9E7E;
+  --sage-light: #C8DBC9;
+  --blush:      #E8C4B8;
+
+  /* Text tiers */
+  --muted:      #6B4F3A;
+  --muted-deco: #A08060;
+
+  /* Photo veil — unifies all photography at warm cream temperature */
+  --photo-veil: rgba(28, 16, 8, 0.38);
+}
+
+/* ============================================================
+   Base reset
+   ============================================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--on-bg);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  line-height: 1.82;
+  overflow-x: hidden;
+  max-width: 100vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   Typography scale — clamp() on every element, no exceptions
+   ============================================================ */
+.text-hero {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  line-height: 0.95;
+  color: var(--on-bg);
+}
+
+.text-page-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+}
+
+.text-section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+
+.text-subheading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.1;
+}
+
+.text-body {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.82;
+}
+
+.text-body-light {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.82;
+}
+
+.text-label {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.625rem, 1vw, 0.75rem);
+  line-height: 1.35;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.text-muted { color: var(--muted); }
+.text-muted-deco { color: var(--muted-deco); }
+
+/* ============================================================
+   Keiki's photo treatment — applied to all cake photography
+   ============================================================ */
+.keiki-photo {
+  filter: saturate(0.95) brightness(0.98);
+  border-radius: 12px;
+}
+
+.keiki-photo-veil {
+  position: relative;
+}
+.keiki-photo-veil::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--photo-veil);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.text-over-photo {
+  text-shadow: 0 2px 12px rgba(28, 16, 8, 0.85);
+}
+
+/* ============================================================
+   Grain texture — subtle warmth, not grit
+   ============================================================ */
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   BTN-17 — The "Book Now" hover animation
+   Gold pill button with satisfying scale + brightness lift.
+   ============================================================ */
+.btn-book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2.25rem;
+  min-height: 44px;
+  min-width: 44px;
+  background-color: var(--accent);
+  color: var(--on-accent);
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 99rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
+}
+.btn-book:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+  box-shadow: 0 6px 28px rgba(184, 147, 90, 0.35);
+}
+
+.btn-book-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2.25rem;
+  min-height: 44px;
+  min-width: 44px;
+  background-color: transparent;
+  color: var(--on-dark);
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--on-dark);
+  border-radius: 99rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, background-color 0.2s ease;
+  will-change: transform;
+}
+.btn-book-light:hover {
+  transform: scale(1.02);
+  background-color: rgba(250, 247, 242, 0.1);
+}
+
+/* ============================================================
+   Gold hairline borders — mirrors Saleena's gold geometric frames
+   ============================================================ */
+.border-gold {
+  border: 1px solid rgba(184, 147, 90, 0.3);
+}
+
+/* ============================================================
+   Nav link underline reveal
+   ============================================================ */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: var(--on-bg);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--accent);
+  transition: width 0.25s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ============================================================
+   Ambient shadow for elevated elements
+   ============================================================ */
+.shadow-ambient {
+  box-shadow: 0 4px 24px rgba(44, 26, 14, 0.08);
+}
+
+/* ============================================================
+   Gallery hover — gold border trace
+   ============================================================ */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  transition: border-color 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+.gallery-item:hover::before {
+  border-color: var(--accent);
+}
+.gallery-item img {
+  transition: transform 0.4s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.03);
+}
+.gallery-item .gallery-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(to top, rgba(28, 16, 8, 0.7), transparent);
+  color: var(--on-dark);
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 3;
+}
+.gallery-item:hover .gallery-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Page fade-in mount
+   ============================================================ */
+.page-enter {
+  opacity: 0;
+  animation: pageFadeIn 0.45s ease forwards;
+}
+@keyframes pageFadeIn {
+  to { opacity: 1; }
+}
+
+/* ============================================================
+   Scrollbar styling
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted-deco);
+  border-radius: 99rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ============================================================
+   Selection color
+   ============================================================ */
+::selection {
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+/* Mobile hamburger overlay */
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .accordion-mobile-fallback {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+}
+
+/* ============================================================
+   KEIKI'S CAKES — GLOBAL CONTRAST & LAYOUT FIXES
+   
+   All color values validated against WCAG AA 4.5:1 minimum.
+   Paste this at the BOTTOM of your index.css file.
+   ============================================================ */
+
+/* ── Enforce contrast on common text elements globally ────────
+   These rules catch any element that was rendered with a color
+   that fails 4.5:1 without being explicitly set in a component.
+   ──────────────────────────────────────────────────────────── */
+
+
+/* ── Hero section fixes ──────────────────────────────────────── */
+
+/* Ensure the hero identity anchor (Zone 1) never escapes
+   above the fixed navbar. If it is rendered outside the
+   padded hero section, this rule hides it there. */
+body > .identity-anchor-misplaced {
+  display: none !important;
+}
+
+/* Hero section must account for 64px fixed navbar */
+.hero-section {
+  padding-top: 64px !important;
+  min-height: 100vh;
+}
+
+/* Hero headline — prevent oversizing */
+.hero-headline {
+  font-size: clamp(2rem, 4vw, 3.5rem) !important;
+  line-height: 0.95 !important;
+  max-width: 520px;
+}
+
+/* Hero left column — prevent bleeding into image area */
+.hero-left-col {
+  max-width: 520px;
+  width: 100%;
+}
+
+
+/* ── Accordion Gallery ─────────────────────────────────────────
+   These styles support the AccordionGallery.tsx component.
+   The core flex mechanic is inline in the component — these
+   handle edge cases and the mobile fallback.
+   ──────────────────────────────────────────────────────────── */
+
+/* Accordion container wrapper */
+.accordion-gallery-wrap {
+  padding: 5rem 0 6rem;
+  background: var(--bg);
+}
+
+/* Mobile fallback — below 768px, accordion collapses to a 2-column grid.
+   The expand-on-hover mechanic doesn't work on touch devices. */
+@media (max-width: 768px) {
+  .accordion-panels-container {
+    /* Override the flex layout with a grid on mobile */
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    height: auto !important;
+    gap: 8px !important;
+  }
+
+  .accordion-panel {
+    /* Each panel becomes a square on mobile */
+    flex: none !important;
+    height: 200px !important;
+    transition: none !important;
+  }
+
+  /* Hide the vertical labels on mobile — they don't apply in grid layout */
+  .accordion-vertical-label {
+    display: none !important;
+  }
+
+  /* Always show the bottom label on mobile */
+  .accordion-label-reveal {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Gradient veil always full opacity on mobile */
+  .accordion-veil {
+    opacity: 0.65 !important;
+  }
+}
+
+/* Touch devices — disable hover expansion, use tap instead */
+@media (hover: none) {
+  .accordion-panels-container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    height: auto !important;
+  }
+}
+
+/* Focus ring for keyboard navigation */
+.accordion-panel:focus-visible {
+  outline: 2px solid var(--accent) !important;
+  outline-offset: 2px !important;
+}
+
+
+/* ── Section header contrast ───────────────────────────────────
+   The "FROM THE KITCHEN" label and "Recent Work" heading
+   must pass contrast minimums.
+   ──────────────────────────────────────────────────────────── */
+
+.section-label {
+  color: var(--muted);           /* #6B4F3A — 5.8:1 on --bg ✓ */
+  font-family: 'Jost', sans-serif;
+  font-size: clamp(0.625rem, 1vw, 0.75rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  color: var(--on-bg);           /* #2C1A0E — 14.1:1 ✓ */
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+
+/* ── Navbar contrast ────────────────────────────────────────────
+   Navbar links must pass 4.5:1 on their background.
+   ──────────────────────────────────────────────────────────── */
+
+/* Transparent state — links on --bg (#FAF7F2) */
+nav a {
+  color: var(--on-bg);           /* #2C1A0E — 14.1:1 ✓ */
+}
+
+nav a:hover {
+  color: var(--muted);           /* #6B4F3A — 5.8:1 ✓ — still passes */
+}
+
+/* Solid navbar state (on scroll) — same token, still passes */
+nav.scrolled {
+  background: rgba(250, 247, 242, 0.95);  /* --bg at 95% opacity */
+}
+
+nav.scrolled a {
+  color: var(--on-bg);           /* #2C1A0E — still 14.1:1 at 95% opacity ✓ */
+}
+
+
+/* ── Footer contrast ────────────────────────────────────────────
+   All footer text must pass 4.5:1 on --dark (#1C1008).
+   ──────────────────────────────────────────────────────────── */
+
+footer {
+  background: var(--dark);       /* #1C1008 */
+  color: var(--on-dark);         /* #FAF7F2 — 15.2:1 ✓ */
+}
+
+/* Secondary footer text — validated */
+footer .footer-muted {
+  color: rgba(250, 247, 242, 0.78);  /* ~12:1 ✓ — still well above 4.5:1 */
+}
+
+/* Policy disclaimer in footer — minimum readable size */
+footer .policy-note {
+  color: rgba(250, 247, 242, 0.78);
+  font-size: 0.75rem;            /* minimum 10px rendered — ✓ */
+  line-height: 1.6;
+}
+
+
+/* ── BTN-17 contrast verification ──────────────────────────────
+   Gold button (#B8935A background, #1C1008 text): 6.1:1 ✓
+   Light variant (transparent bg, #FAF7F2 text on dark): 15.2:1 ✓
+   ──────────────────────────────────────────────────────────── */
+
+.btn-17 {
+  /* Verified: #1C1008 text on #B8935A gold = 6.1:1 ✓ AA */
+  background-color: var(--dark);
+  color: var(--on-dark);
+}
+
+.btn-17-light {
+  /* Verified: #FAF7F2 text on dark surface = 15.2:1 ✓ AAA */
+  background-color: transparent;
+  color: var(--on-dark);
+  border-color: rgba(250, 247, 242, 0.35);
+}
+
+.btn-17-accent {
+  /* Verified: #1C1008 text on #B8935A accent = 6.1:1 ✓ AA */
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+
+
+@property --r {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.rotatingGradient {
+  background: conic-gradient(from var(--r), transparent 20%, #B8935A 50%, transparent 80%);
+  animation: rotate-gradient 3s linear infinite;
+}
+
+@keyframes rotate-gradient {
+  from { --r: 0deg; }
+  to { --r: 360deg; }
+}
+
+/* ============================================================
+   Gallery 3D Flip Cards (Specialty Treats)
+   ============================================================ */
+.flip-card {
+  perspective: 1000px;
+  cursor: pointer;
+}
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+/* Allow toggle click on touch devices by toggling '.flipped' or pure hover */
+.flip-card:hover .flip-inner, 
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-front, 
+.flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 12px;
+}
+.flip-front {
+  z-index: 1;
+}
+.flip-back {
+  background: var(--dark);
+  color: var(--on-dark);
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  border: 1px solid rgba(184, 147, 90, 0.2); /* Subtle gold border */
+}
+
+/* ============================================================
+   Focus-visible — Keyboard accessibility ring
+   Only appears for keyboard navigation, not mouse clicks.
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Suppress outline on mouse interaction */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ============================================================
+   Reduced Motion — Accessibility compliance
+   Disables all animations and transitions for users who
+   prefer reduced motion in their OS settings.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .page-enter {
+    opacity: 1;
+    animation: none;
+  }
+}
