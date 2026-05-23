@@ -339,6 +339,19 @@ export default function CinematicHero() {
             transition: 'opacity 0.8s ease 0.2s, visibility 0.8s ease',
           }}
         >
+          {/* Seamless, full-width bottom vignette gradient to naturally darken the video area behind the text without box outlines */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: '50%',
+              background: 'linear-gradient(to top, rgba(28, 16, 8, 0.6) 0%, rgba(28, 16, 8, 0.25) 45%, transparent 100%)',
+              pointerEvents: 'none',
+            }}
+          />
+
           <div
             style={{
               position: 'absolute',
@@ -348,6 +361,7 @@ export default function CinematicHero() {
               display: 'flex',
               flexDirection: 'column',
               gap: '1.25rem',
+              zIndex: 2,
             }}
           >
             <h1
@@ -359,7 +373,7 @@ export default function CinematicHero() {
                 color: '#FAF7F2',
                 margin: 0,
                 letterSpacing: '-0.01em',
-                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.95), -1px -1px 2px rgba(0, 0, 0, 0.95), 1px -1px 2px rgba(0, 0, 0, 0.95), -1px 1px 2px rgba(0, 0, 0, 0.95), 0 4px 20px rgba(0, 0, 0, 0.6)',
+                textShadow: '0 2px 12px rgba(28, 16, 8, 0.5), 0 1px 3px rgba(28, 16, 8, 0.3)',
               }}
             >
               <span style={{ display: 'block', overflow: 'hidden' }}>
@@ -379,7 +393,7 @@ export default function CinematicHero() {
                 lineHeight: 1.82,
                 color: 'rgba(250, 247, 242, 0.88)',
                 margin: 0,
-                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.95), -1px -1px 2px rgba(0, 0, 0, 0.95), 1px -1px 2px rgba(0, 0, 0, 0.95), -1px 1px 2px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.6)',
+                textShadow: '0 1px 8px rgba(28, 16, 8, 0.5), 0 1px 2px rgba(28, 16, 8, 0.3)',
                 opacity: 0,
                 transform: 'translateY(15px)',
               }}
