@@ -50,7 +50,7 @@ export default function Footer() {
                 fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
               }}
             >
-              Serving the San Gabriel Valley, West Covina & the Inland Empire
+              Serving West Covina and the Inland Empire!
             </p>
           </div>
 

@@ -339,23 +339,6 @@ export default function CinematicHero() {
             transition: 'opacity 0.8s ease 0.2s, visibility 0.8s ease',
           }}
         >
-          {/* Edge overlay removed — background color now seamlessly
-              matches the video frame edges. Only the bottom-left text
-              scrim remains (below) as part of the text overlay div. */}
-
-          <div
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              width: '100%',
-              maxWidth: '800px',
-              height: '100%',
-              background: 'linear-gradient(to top, rgba(28, 16, 8, 0.55) 0%, transparent 40%)',
-              pointerEvents: 'none',
-            }}
-          />
-
           <div
             style={{
               position: 'absolute',
@@ -376,7 +359,7 @@ export default function CinematicHero() {
                 color: '#FAF7F2',
                 margin: 0,
                 letterSpacing: '-0.01em',
-                textShadow: '0 2px 20px rgba(28, 16, 8, 0.9)',
+                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.95), -1px -1px 2px rgba(0, 0, 0, 0.95), 1px -1px 2px rgba(0, 0, 0, 0.95), -1px 1px 2px rgba(0, 0, 0, 0.95), 0 4px 20px rgba(0, 0, 0, 0.6)',
               }}
             >
               <span style={{ display: 'block', overflow: 'hidden' }}>
@@ -396,7 +379,7 @@ export default function CinematicHero() {
                 lineHeight: 1.82,
                 color: 'rgba(250, 247, 242, 0.88)',
                 margin: 0,
-                textShadow: '0 2px 20px rgba(28, 16, 8, 0.9)',
+                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.95), -1px -1px 2px rgba(0, 0, 0, 0.95), 1px -1px 2px rgba(0, 0, 0, 0.95), -1px 1px 2px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.6)',
                 opacity: 0,
                 transform: 'translateY(15px)',
               }}

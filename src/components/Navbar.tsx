@@ -41,7 +41,7 @@ export default function Navbar() {
     <>
       {/* Pill wrapper — fixed, centered, floats with margin from edges */}
       <div
-        className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none"
+        className="fixed top-0 left-0 right-0 z-[110] flex justify-center pointer-events-none"
         style={{ padding: '14px 16px 0' }}
       >
         <nav
@@ -143,6 +143,12 @@ export default function Navbar() {
               Book Now
             </GradientButton>
           </div>
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="mt-6 text-espresso/70 hover:text-espresso transition-colors font-body text-sm uppercase tracking-wider flex items-center gap-2"
+          >
+            <span>← Back to Website</span>
+          </button>
         </div>
       )}
     </>
